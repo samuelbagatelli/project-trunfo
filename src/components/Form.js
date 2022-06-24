@@ -9,61 +9,61 @@ class Forms extends Component {
 
     return (
       <form>
-        <label htmlFor="nome">
+        <label htmlFor="name">
           Nome
           <input
             data-testid="name-input"
             type="text"
-            name="nome"
+            name="name"
             value={ cardName }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="descricao">
+        <label htmlFor="description">
           Descrição
           <textarea
             data-testid="description-input"
-            name="descricao"
+            name="description"
             value={ cardDescription }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="forca">
+        <label htmlFor="attr1">
           Força
           <input
             data-testid="attr1-input"
             type="number"
-            name="forca"
+            name="attr1"
             value={ cardAttr1 }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="velocidade">
+        <label htmlFor="attr2">
           Velocidade
           <input
             data-testid="attr2-input"
             type="number"
-            name="velocidade"
+            name="attr2"
             value={ cardAttr2 }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="resistencia">
+        <label htmlFor="attr3">
           Resistência
           <input
             data-testid="attr3-input"
             type="number"
-            name="resistencia"
+            name="attr3"
             value={ cardAttr3 }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="imagem">
+        <label htmlFor="image">
           Imagem
           <input
             data-testid="image-input"
             type="text"
-            name="imagem"
+            name="image"
             value={ cardImage }
             onChange={ onInputChange }
           />
