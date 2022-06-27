@@ -6,8 +6,6 @@ class App extends React.Component {
   constructor() {
     super();
 
-    this.onInputChange = this.onInputChange.bind(this);
-
     this.state = {
       name: '',
       description: '',
@@ -15,23 +13,68 @@ class App extends React.Component {
       attr2: '',
       attr3: '',
       image: '',
-      rare: '',
-      trunfo: undefined,
+      rare: 'normal',
+      trunfo: false,
+      button: true,
     };
   }
 
-  onInputChange({ target }) {
+  validateEach = () => {
+    const {
+      name,
+      description,
+      attr1,
+      attr2,
+      attr3,
+      image,
+    } = this.state;
+
+    const ninety = 90;
+    const twoHundredTen = 210;
+
+    const sum = (+attr1) + (+attr2) + (+attr3);
+
+    if (
+      (+attr1) > ninety
+      || (+attr1) < 0
+      || (+attr2) > ninety
+      || (+attr2) < 0
+      || (+attr3) > ninety
+      || (+attr3) < 0
+    ) return true;
+
+    return !(
+      name
+      && description
+      && image
+      && sum <= twoHundredTen
+    );
+  }
+
+  onInputChange = ({ target }) => {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
 
-    this.setState({
-      [name]: value,
-    });
+    this.setState(
+      {
+        [name]: value,
+      },
+      () => this.setState({ button: this.validateEach() }),
+    );
   }
 
   render() {
-    const { name, description, attr1, attr2, attr3,
-      image, rare, trunfo } = this.state;
+    const {
+      name,
+      description,
+      attr1,
+      attr2,
+      attr3,
+      image,
+      rare,
+      trunfo,
+      button,
+    } = this.state;
 
     return (
       <div>
@@ -47,6 +90,7 @@ class App extends React.Component {
             cardImage={ image }
             cardRare={ rare }
             cardTrunfo={ trunfo }
+            isSaveButtonDisabled={ button }
           />
           <Card
             cardName={ name }

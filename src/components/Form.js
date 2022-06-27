@@ -3,9 +3,19 @@ import PropTypes from 'prop-types';
 
 class Forms extends Component {
   render() {
-    const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
-      cardImage, cardRare, cardTrunfo, isSaveButtonDisabled,
-      onInputChange, onSaveButtonClick } = this.props;
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      isSaveButtonDisabled,
+      onInputChange,
+      onSaveButtonClick,
+    } = this.props;
 
     return (
       <form>
@@ -17,6 +27,7 @@ class Forms extends Component {
             name="name"
             value={ cardName }
             onChange={ onInputChange }
+            required
           />
         </label>
         <label htmlFor="description">
@@ -26,6 +37,7 @@ class Forms extends Component {
             name="description"
             value={ cardDescription }
             onChange={ onInputChange }
+            required
           />
         </label>
         <label htmlFor="attr1">
@@ -36,6 +48,7 @@ class Forms extends Component {
             name="attr1"
             value={ cardAttr1 }
             onChange={ onInputChange }
+            required
           />
         </label>
         <label htmlFor="attr2">
@@ -46,6 +59,7 @@ class Forms extends Component {
             name="attr2"
             value={ cardAttr2 }
             onChange={ onInputChange }
+            required
           />
         </label>
         <label htmlFor="attr3">
@@ -56,6 +70,7 @@ class Forms extends Component {
             name="attr3"
             value={ cardAttr3 }
             onChange={ onInputChange }
+            required
           />
         </label>
         <label htmlFor="image">
@@ -66,6 +81,7 @@ class Forms extends Component {
             name="image"
             value={ cardImage }
             onChange={ onInputChange }
+            required
           />
         </label>
         <label htmlFor="rare">
@@ -75,6 +91,7 @@ class Forms extends Component {
             name="rare"
             value={ cardRare }
             onChange={ onInputChange }
+            required
           >
             <option value="normal">normal</option>
             <option value="raro">raro</option>
@@ -92,7 +109,7 @@ class Forms extends Component {
           />
         </label>
         <button
-          type="button"
+          type="submit"
           data-testid="save-button"
           disabled={ isSaveButtonDisabled }
           onClick={ onSaveButtonClick }
