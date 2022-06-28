@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from './components/Card';
 import Forms from './components/Form';
-import CardDeck from './components/CardDeck';
+// import CardDeck from './components/CardDeck';
 
 class App extends React.Component {
   constructor() {
@@ -66,6 +66,10 @@ class App extends React.Component {
     );
   }
 
+  // hasTrunfo = () => {
+
+  // }
+
   handleSubmit = (event) => {
     event.preventDefault();
   }
@@ -123,7 +127,7 @@ class App extends React.Component {
             cardRare={ rare }
             cardTrunfo={ trunfo }
           />
-          <CardDeck />
+          {/* <CardDeck /> */}
         </div>
       </div>
     );
