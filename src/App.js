@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from './components/Card';
+import CardDeck from './components/CardDeck';
 import Forms from './components/Form';
-// import CardDeck from './components/CardDeck';
 
 class App extends React.Component {
   constructor() {
@@ -18,6 +18,7 @@ class App extends React.Component {
       trunfo: false,
       button: true,
       hasTrunfo: false,
+      cardDeck: [],
     };
   }
 
@@ -66,14 +67,36 @@ class App extends React.Component {
       },
     );
 
-    this.checkTrunfo();
-  }
+    const {
+      name,
+      description,
+      attr1,
+      attr2,
+      attr3,
+      image,
+      rare,
+      trunfo,
+      cardDeck,
+    } = this.state;
 
-  checkTrunfo = () => {
-    const { trunfo } = this.state;
     if (trunfo) {
       this.setState({ hasTrunfo: true });
     }
+
+    const card = {
+      name,
+      description,
+      attr1,
+      attr2,
+      attr3,
+      image,
+      rare,
+      trunfo,
+    };
+
+    this.setState({
+      cardDeck: [...cardDeck, card],
+    });
   }
 
   handleSubmit = (event) => {
@@ -104,6 +127,7 @@ class App extends React.Component {
       trunfo,
       button,
       hasTrunfo,
+      cardDeck,
     } = this.state;
 
     return (
@@ -135,7 +159,7 @@ class App extends React.Component {
             cardRare={ rare }
             cardTrunfo={ trunfo }
           />
-          {/* <CardDeck /> */}
+          <CardDeck cardDeck={ cardDeck } />
         </div>
       </div>
     );
