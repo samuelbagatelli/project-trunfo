@@ -54,6 +54,19 @@ class App extends React.Component {
     );
   }
 
+  deleteCard = ({ target }) => {
+    const { cardDeck } = this.state;
+
+    cardDeck.forEach((element) => {
+      if (element.trunfo) {
+        this.setState({ hasTrunfo: false });
+      }
+    });
+
+    cardDeck.splice(target.id, 1);
+    this.setState({ cardDeck }, () => this.validateEach);
+  }
+
   onSaveButtonClick = () => {
     this.setState(
       {
@@ -159,7 +172,10 @@ class App extends React.Component {
             cardRare={ rare }
             cardTrunfo={ trunfo }
           />
-          <CardDeck cardDeck={ cardDeck } />
+          <CardDeck
+            cardDeck={ cardDeck }
+            deleteCard={ this.deleteCard }
+          />
         </div>
       </div>
     );
