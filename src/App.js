@@ -17,6 +17,7 @@ class App extends React.Component {
       rare: 'normal',
       trunfo: false,
       button: true,
+      hasTrunfo: false,
     };
   }
 
@@ -64,11 +65,16 @@ class App extends React.Component {
         rare: 'normal',
       },
     );
+
+    this.checkTrunfo();
   }
 
-  // hasTrunfo = () => {
-
-  // }
+  checkTrunfo = () => {
+    const { trunfo } = this.state;
+    if (trunfo) {
+      this.setState({ hasTrunfo: true });
+    }
+  }
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -97,6 +103,7 @@ class App extends React.Component {
       rare,
       trunfo,
       button,
+      hasTrunfo,
     } = this.state;
 
     return (
@@ -116,6 +123,7 @@ class App extends React.Component {
             cardTrunfo={ trunfo }
             isSaveButtonDisabled={ button }
             onSaveButtonClick={ this.onSaveButtonClick }
+            hasTrunfo={ hasTrunfo }
           />
           <Card
             cardName={ name }

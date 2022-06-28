@@ -16,11 +16,12 @@ class Forms extends Component {
       onInputChange,
       onSaveButtonClick,
       handleSubmit,
+      hasTrunfo,
     } = this.props;
 
     return (
       <form>
-        <label htmlFor="name" onSubmit={ handleSubmit }>
+        <label htmlFor="name" onSubmit={ () => handleSubmit() }>
           Nome
           <input
             data-testid="name-input"
@@ -101,13 +102,13 @@ class Forms extends Component {
         </label>
         <label htmlFor="trunfo">
           Super Trunfo
-          <input
+          { !hasTrunfo ? <input
             data-testid="trunfo-input"
             type="checkbox"
             name="trunfo"
             checked={ cardTrunfo }
             onChange={ onInputChange }
-          />
+          /> : <span>Você já tem um Super Trunfo em seu baralho</span> }
         </label>
         <button
           type="submit"
@@ -132,7 +133,7 @@ Forms.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  // hasTrunfo: PropTypes.bool.isRequired,
+  hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
