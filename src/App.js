@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from './components/Card';
 import Forms from './components/Form';
+import CardDeck from './components/CardDeck';
 
 class App extends React.Component {
   constructor() {
@@ -51,6 +52,24 @@ class App extends React.Component {
     );
   }
 
+  onSaveButtonClick = () => {
+    this.setState(
+      {
+        name: '',
+        description: '',
+        attr1: 0,
+        attr2: 0,
+        attr3: 0,
+        image: '',
+        rare: 'normal',
+      },
+    );
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+  }
+
   onInputChange = ({ target }) => {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -82,6 +101,7 @@ class App extends React.Component {
         <div>
           <Forms
             onInputChange={ this.onInputChange }
+            handleSubmit={ this.handleSubmit }
             cardName={ name }
             cardDescription={ description }
             cardAttr1={ attr1 }
@@ -91,6 +111,7 @@ class App extends React.Component {
             cardRare={ rare }
             cardTrunfo={ trunfo }
             isSaveButtonDisabled={ button }
+            onSaveButtonClick={ this.onSaveButtonClick }
           />
           <Card
             cardName={ name }
@@ -102,6 +123,7 @@ class App extends React.Component {
             cardRare={ rare }
             cardTrunfo={ trunfo }
           />
+          <CardDeck />
         </div>
       </div>
     );

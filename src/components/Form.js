@@ -15,11 +15,12 @@ class Forms extends Component {
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
+      handleSubmit,
     } = this.props;
 
     return (
       <form>
-        <label htmlFor="name">
+        <label htmlFor="name" onSubmit={ handleSubmit }>
           Nome
           <input
             data-testid="name-input"
@@ -135,6 +136,7 @@ Forms.propTypes = {
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
 };
 
 export default Forms;
